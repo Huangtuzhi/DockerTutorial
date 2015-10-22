@@ -181,8 +181,59 @@ huangyi@HP ~/Practice/Docker/redis $ sudo docker port redis 6379
 0.0.0.0:49155
 ```
 
-在宿主机上运行 redis 客户端连接到容器中的 redis 服务器端。
+在宿主机上运行 Redis 客户端连接到容器中的 Redis 服务器端。
 
 `redis-cli -h 127.0.0.1 -p 49155`
 
 #让 Docker 容器互联
+
+首先启动 Redis 容器，不指定端口
+
+` sudo docker run -d --name redis titushuang/redis`
+
+启动 WebApp 容器，连接到 Redis 容器上。
+
+`sudo docker run -p 4567 --name WebappDB --link redis:db -t -i -v $PWD/webapp:/var/www/webapp titushuang/sinatra /bin/bash`
+
+`redis:db` 中的 redis 是要连接的容器, db 是连接后的别名。 WebappDB 容器可以访问 redis 容器的所有端口。
+
+在 WebappDB 容器中查看连接父子容器后在 `/etc/hosts` 中做的改变
+
+```
+web@2c3f5f9a136f:/$ cat /etc/hosts 
+172.17.0.3  2c3f5f9a136f
+...
+172.17.0.2  db
+```
+
+第一项是 WebappDB 容器的 IP 地址和主机名。第二项是 redis 容器的 IP 地址和别名。
+
+在 `app.rb` 中添加以下代码存储数据。
+
+```
+require "rubygems"
+require "sinatra"
+require "json"
+require "redis"
+
+class App < Sinatra::Application
+
+      redis = Redis.new(:host => 'db', :port => '6379')
+
+      set :bind, '0.0.0.0'
+
+      get '/' do
+        "<h1>DockerBook Test Redis-enabled Sinatra app</h1>"
+      end
+
+      get '/json' do
+        params = redis.get "params"
+        params.to_json
+      end
+
+      post '/json/?' do
+        redis.set "params", [params].to_json
+        params.to_json
+      end
+end
+```
