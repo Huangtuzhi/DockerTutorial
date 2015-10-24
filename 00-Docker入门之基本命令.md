@@ -1,11 +1,13 @@
-Mint下安装Docker
+## 安装 Docker
+
+Ubuntu/Mint 下安装 Docker
 
 `sudo apt-get install lxc-docker`
 
-Docker启动报错：
+如果 Docker 启动报错：
 > Error loading docker apparmor profile: exec: "/sbin/apparmor_parser"
 
-需要安装依赖包 
+则需要先安装依赖包 
 
 `sudo apt-get install apparmor`
 
@@ -16,6 +18,8 @@ Docker启动报错：
 `-i： 保证容器中STDIN开启`
 
 `-t： 为容器分配一个伪tty终端`
+
+## 基本命令
 
 查看当前系统中容器的列表
 

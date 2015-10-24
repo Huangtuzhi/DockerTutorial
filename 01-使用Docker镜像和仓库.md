@@ -16,7 +16,7 @@ ubuntu              latest              cdd474520b8c        2 days ago          
 `sudo docker rmi ubuntu`
 
 ## 镜像与容器关系
-一对多
+镜像与容器是一对多映射，类似于
 
 镜像 ——> 程序
 
