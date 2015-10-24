@@ -152,7 +152,8 @@ curl -X POST -H "Content-Type: application/json" \
 
 ```
 curl -X POST -H "Content-Type: application/json" \
-"http://202.201.13.45:4243/containers/d23657590b09df5c1671cd723fe2ff5cf4d89378c2f0d91a55c4e83bf6d832a6/start" \
+"http://202.201.13.45:4243/containers/d23657590b09df5c1671cd723fe2ff5cf4d89378c2f0d91a55c4e83bf6d832a6 \
+start" \
 -d '{
     "PublishAllPorts":true
 }'
@@ -163,7 +164,8 @@ curl -X POST -H "Content-Type: application/json" \
 显示容器详细信息
 
 ```
-curl http://202.201.13.*:4243/containers/d23657590b09df5c1671cd723fe2ff5cf4d89378c2f0d91a55c4e83bf6d832a6/json | \
+curl http://202.201.13.*:4243/containers/ \
+d23657590b09df5c1671cd723fe2ff5cf4d89378c2f0d91a55c4e83bf6d832a6/json | \
 python -mjson.tool
 ```
 
