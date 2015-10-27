@@ -58,4 +58,4 @@
 
 [06-docker-alpine](https://github.com/gliderlabs/docker-alpine) (Alpine Linux 基础镜像)
 
-[07-docker-fluentd](https://github.com/kiyoto/docker-fluentd) (the Container to Log Other Containers' Logs) by [@kiyoto](https://github.com/kiyoto)
+[07-docker-fluentd](https://github.com/kiyoto/docker-fluentd)
