@@ -2,8 +2,6 @@
 
 ## 入门教程
 
-[04-使用 Docker API](./04-使用Docker API.md)
-
 [00-Docker 入门之基本命令](./00-Docker入门之基本命令.md)
 
 [01-使用 Docker 镜像和仓库](./01-使用Docker镜像和仓库.md)
@@ -11,6 +9,8 @@
 [02-在测试中使用 Docker](./02-在测试中使用Docker.md)
 
 [03-使用 Docker 构建服务](./03-使用Docker构建服务.md)
+
+[04-使用 Docker API](https://github.com/Huangtuzhi/DockerTutorial/blob/master/04-%E4%BD%BF%E7%94%A8Docker%20API.md)
 
 ## 书籍
 
